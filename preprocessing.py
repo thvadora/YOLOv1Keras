@@ -90,13 +90,10 @@ def generateData(filename):
 		label[i][j][0:5] = [x,y,w,h,1]
 		label[i][j][5:10] = [x,y,w,h,1]
 		label[i][j][10+CLASSES[box['category']]]=1
-	cPickle.dump(label, open(os.path.join(path,filename+'.pkl'),'wb'))
+	cPickle.dump(label, open(os.path.join(path,'Y',filename+'.pkl'),'wb'))
 
 
-
-
-
-
+generateData('2007_000032')
 
 
 
