@@ -90,29 +90,7 @@ def generateData(filename):
 		label[i][j][0:5] = [x,y,w,h,1]
 		label[i][j][5:10] = [x,y,w,h,1]
 		label[i][j][10+CLASSES[box['category']]]=1
-		"""color = (255, 0, 0) 
-		thickness = 2
-		window_name = 'Test'
-		image = cv2.imread(os.path.join(TRAIN,'X', filename+'.jpg'))
-		image = cv2.rectangle(image, (x-w//2,y+h//2), (x+w//2,y-h//2), color, thickness) 
-		# Displaying the image  
-		cv2.imshow(window_name, image)
-		cv2.waitKey(0)"""
 	cPickle.dump(label, open(os.path.join(path,filename+'.pkl'),'wb'))
-
-
-
-
-		
-		
-
-
-
-#generateData('2007_000032')
-
-thing_to_save = cPickle.load( open(os.path.join(TRAIN,'2007_000032'+'.pkl'),"rb"))
-print(type(thing_to_save))
-
 
 
 
