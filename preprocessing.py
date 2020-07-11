@@ -92,8 +92,27 @@ def generateData(filename):
 		label[i][j][10+CLASSES[box['category']]]=1
 	cPickle.dump(label, open(os.path.join(path,'Y',filename+'.pkl'),'wb'))
 
+#this function need to be executed one time only
+def createXY(path):
+	l = os.listdir(path)
+	ac = 0
+	for idx,f in enumerate(l):
+		if idx%(int(len(l)/100))==0:
+			if ac<=100:
+				print(str(ac)+'%')
+			ac+=1
+		generateData(f.split('.')[0])
 
-generateData('2007_000032')
+
+
+if __name__ == '__main__':
+	
+	createnewdata = 1
+
+	if createnewdata:
+		createXY(IMAGESPATH)
+
+
 
 
 
