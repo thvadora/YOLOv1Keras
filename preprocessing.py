@@ -5,7 +5,6 @@ import xmltodict
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 import random
-import cv2
 import _pickle as cPickle
 
 DATASET = 'VOC2012/' # original VOC dataset
@@ -82,13 +81,13 @@ def generateData(filename):
 		h=int(h*imghratio)
 		x=int(x*imgwratio)
 		y=int(y*imghratio)
-		i, j = x//64, y//64 
+		i, j = x//64, y//64 # the grid cell responsible of that object
 		w/=448 # sacaled from all picture
 		h/=448
 		x = (x/64)-i #scaled form grid cell
 		y = (y/64)-j
-		label[i][j][0:5] = [x,y,w,h,1]
-		label[i][j][5:10] = [x,y,w,h,1]
+		label[i][j][0:5] = [1,x,y,w,h]
+		label[i][j][5:10] = [1,x,y,w,h]
 		label[i][j][10+CLASSES[box['category']]]=1
 	cPickle.dump(label, open(os.path.join(path,'Y',filename+'.pkl'),'wb'))
 

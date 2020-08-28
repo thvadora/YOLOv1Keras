@@ -3,3 +3,5 @@ ValidationData/
 __pycache__/
 .DS_Store
 VOC2012/
+yoloenv/
+.vscode/
